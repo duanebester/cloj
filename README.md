@@ -1,5 +1,7 @@
 # cloj
 
+I'm very new to Clojure, trying some things out :)
+
 ## A Clojure Only Web Application
 
 > lein deps
