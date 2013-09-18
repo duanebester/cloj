@@ -14,7 +14,7 @@ Server should be running @ localhost:1337
 
 The MIT License (MIT)
 
-Copyright (c) 2013 David Pollak
+Copyright (c) 2013 Duane Bester
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
