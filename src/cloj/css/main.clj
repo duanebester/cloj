@@ -2,7 +2,7 @@
   (:use compojure.core)
   (:refer-clojure :exclude [+ - * /])
   (:require [garden.units :as gu :refer [px em]]
-            [garden.color :as gc :refer [hsl]]
+            [garden.color :as gc :refer [hsl rgb]]
             [garden.arithemetic :refer [+ - * /]]
             [garden.def :refer [defrule]]
             [garden.core :refer [css]]
@@ -143,13 +143,24 @@
 ;; Define our "fixed" grid CSS.
 (def fixed
   ;; Create a standard grid and bind the key values.
-  (let [{:keys [row column push pull]} (create-grid)]
+
     (styles
      ["*" "*:after" "*:before"
       {:box-sizing "border-box"}]
+
+     [:button
+      {:padding [(px 6) (px 12)]
+       :background (rgb [200 100 100])
+       :border-radius (px 4)
+       :text-align "center"
+       :border [(px 1) "solid" "transparent"]
+       :-webkit-appearance "button"
+       :font-size (px 12)
+       :color (rgb [230 230 230])}]
  
      [:body
       {:width (gu/percent 100)
+       :background (rgb [166 192 201])
        :font-family [["Georgia" :sans-serif]]
        :padding 0
        :margin 0}
@@ -159,27 +170,26 @@
       {:font-weight "normal"})
  
      (center
-      {:width (px 960)
+      {:width (gu/percent 100)
        :margin [0 "auto"]
        :overflow "hidden"})
  
      (top
-      (column 12)
-      {:margin-bottom (em 1)
+      center-text
+      {:width (gu/percent 100)
+       :margin (em 0)
        :color (hsl [0 0 100])
-       :background (hsl [0 0 0])
-       :padding (px 20)})
+       :padding (px 5)
+       :background (rgb [54 54 54])})
  
      (main
-      center-text
-      (column 9)
-      {:color (hsl [0 0 40])
-       :background (hsl [0 0 80])
-       :padding (px 20)})
+      {:margin [(px 20) "auto"]
+       :color (hsl [0 0 30])
+       :float "none"
+       :padding (px 40)})
  
      (sidebar
       center-text
-      (column 3)
       {:color (hsl [0 0 40])
        :background (hsl [0 0 80])
-       :padding (px 20)}))))
+       :padding (px 20)})))

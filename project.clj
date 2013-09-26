@@ -14,7 +14,10 @@
                  [org.clojure/core.async "0.1.0-SNAPSHOT"]
                  [org.clojure/data.json "0.2.3"]
                  [org.clojure/tools.logging "0.2.6"]        ;; Logging
+                 ;;[clj-ssh "0.5.6"]                          ;; SSH
                  ;;[clj-logging-config "1.9.10"]              ;; Use this to set up logging formatting
+                 [cljs-ajax "0.2.0"]
+                 [domina "1.0.2-SNAPSHOT"]
         				 ]
 
   ;; Plugin to compile ClojureScript to JavaScript

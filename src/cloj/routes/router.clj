@@ -5,15 +5,25 @@
         [compojure.handler :only [site]] ; form query params decode; cookie; session, etc
         [compojure.core :only [defroutes GET POST DELETE ANY context]]
         [org.httpkit.server]
+        [clojure.tools.logging :only (info error)]
         [hiccup.core]))
 
+(defn- now [] (quot (System/currentTimeMillis) 1000))
+
+
+(defn poll-mesg [req]
+  (info "/api")
+  (layout/jsonRes {:test {:val1 "Value"}}))
+
 (defn show-landing-page [req]
+  (info "Home Page: /")
   #_(redis/set "foo" "bar")
   #_(println (redis/get "foo"))
   (layout/base [:div{:id "foo" :class "bar baz"} "Inner Content"]
   	                  [:ul {:id "cheese" :class "wine"}
                           (for [x (range 1 4)]
-                          [:li x])])
+                          [:li x])]
+                      [:button {:id "ping"} "ping"])
 )
 
 #_(defn update-userinfo [req]          ;; ordinary clojure function
@@ -45,6 +55,7 @@
 (defroutes all-routes
   (GET "/" [] show-landing-page)
   (GET "/ws" [] chat-handler)     ;; websocket
+  (GET "/api" [] poll-mesg)     ;; websocket
   (GET "/async" [] async-handler) ;; asynchronous(long polling)
   ;;(context "/user/:id" []
   ;;         (GET / [] get-user-by-id)

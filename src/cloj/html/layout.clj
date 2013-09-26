@@ -1,6 +1,7 @@
 (ns cloj.html.layout
-  (:use     [hiccup.page :only [include-css html5]]
+  (:use [hiccup.page :only [include-css html5]]
   			[compojure.core]
+        [clojure.data.json :only [json-str]]
   			[cloj.css.main :as style])
   (:require [garden.core :refer [css]]
             [hiccup.page :refer [html5]]))
@@ -11,10 +12,15 @@
      [:title "Cloj"]
      [:style (css style/fixed)]
      [:script {:type "text/javascript" :src "/js/main.js"}]
-     ;;[:script {:type "text/javascript"} "goog.require('hello');"]
      ]
     [:body
-      (center
-       (top [:h1 "Grid System"])
-       (main [:h2 "Main"] content)
-       (sidebar [:h2 "Sidebar"]))]))
+      [:div.center
+       [:section#top [:h1 "Cloj"]]
+       [:section#main [:h2 "Main"] content]
+       #_(sidebar [:h2 "Sidebar"])]
+      [:script {:type "text/javascript"} "cloj.js.script.init();"]]))
+
+(def ^{:const true} json-header {"Content-Type" "application/json; charset=utf-8"})
+
+(defn jsonRes [& content]
+  {:status 200 :headers json-header :body (json-str content)})
