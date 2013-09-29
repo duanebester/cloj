@@ -14,3 +14,8 @@
   (set! (. dom -innerHTML) content))
 (defn log [& logs]
 	(.log js/console (str logs)))
+
+(defn json-parse
+  "Returns ClojureScript data for the given JSON string."
+  [line]
+  (js->clj (JSON/parse line)))

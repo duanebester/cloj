@@ -150,17 +150,16 @@
 
      [:button
       {:padding [(px 6) (px 12)]
-       :background (rgb [200 100 100])
+       :background (rgb [54 126 173])
        :border-radius (px 4)
        :text-align "center"
        :border [(px 1) "solid" "transparent"]
-       :-webkit-appearance "button"
        :font-size (px 12)
        :color (rgb [230 230 230])}]
  
      [:body
       {:width (gu/percent 100)
-       :background (rgb [166 192 201])
+       :background (rgb [220 245 255])
        :font-family [["Georgia" :sans-serif]]
        :padding 0
        :margin 0}

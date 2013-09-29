@@ -5,6 +5,7 @@
         [compojure.handler :only [site]] ; form query params decode; cookie; session, etc
         [compojure.core :only [defroutes GET POST DELETE ANY context]]
         [org.httpkit.server]
+        [clojure.data.json :only [write-str]]
         [clojure.tools.logging :only (info error)]
         [hiccup.core]))
 
@@ -13,7 +14,9 @@
 
 (defn poll-mesg [req]
   (info "/api")
-  (layout/jsonRes {:test {:val1 "Value"}}))
+  {:status 200
+   :headers {"Content-Type" "application/json; charset=utf-8"}
+   :body (write-str {:test "value"})})
 
 (defn show-landing-page [req]
   (info "Home Page: /")
@@ -23,7 +26,7 @@
   	                  [:ul {:id "cheese" :class "wine"}
                           (for [x (range 1 4)]
                           [:li x])]
-                      [:button {:id "ping"} "ping"])
+                      [:button {:id "ping"} "Ping"])
 )
 
 #_(defn update-userinfo [req]          ;; ordinary clojure function

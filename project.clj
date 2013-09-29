@@ -18,6 +18,7 @@
                  ;;[clj-logging-config "1.9.10"]              ;; Use this to set up logging formatting
                  [cljs-ajax "0.2.0"]
                  [domina "1.0.2-SNAPSHOT"]
+                 [org.clojure/clojurescript "0.0-1859"]
         				 ]
 
   ;; Plugin to compile ClojureScript to JavaScript
