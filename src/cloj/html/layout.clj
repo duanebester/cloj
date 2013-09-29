@@ -3,8 +3,7 @@
   			[compojure.core]
   			[cloj.css.main :as style])
   (:require [garden.core :refer [css]]
-            [hiccup.page :refer [html5]]
-            [clojure.data.json :as json]))
+            [hiccup.page :refer [html5]]))
 
 (defn base [& content]
   (html5
@@ -15,12 +14,8 @@
     [:body
       [:div.center
        [:section#top [:h1 "Cloj"]]
-       [:section#main [:h2 "Main"] content]
+       [:section#main [:h2 "Server Ping"] content]
        #_(sidebar [:h2 "Sidebar"])]
       [:script {:type "text/javascript" :src "/js/main.js"}]
-      [:script {:type "text/javascript"} "cloj.js.script.init();"]]))
-
-#_(def ^{:const true} json-header {"Content-Type" "application/json; charset=utf-8"})
-
-#_(defn jsonRes [& content]
-  {:status 200 :headers json-header :body (json/write-str content)})
+      [:script {:type "text/javascript"} "cloj.cljs.script.init();"]
+      [:script {:type "text/javascript"} "cloj.cljs.sockets.init();"]]))

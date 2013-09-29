@@ -5,28 +5,28 @@
         [compojure.handler :only [site]] ; form query params decode; cookie; session, etc
         [compojure.core :only [defroutes GET POST DELETE ANY context]]
         [org.httpkit.server]
-        [clojure.data.json :only [write-str]]
+        [cloj.json.response :only [jsonRes]]
         [clojure.tools.logging :only (info error)]
         [hiccup.core]))
 
 (defn- now [] (quot (System/currentTimeMillis) 1000))
 
+(def channels (atom []))
+
 
 (defn poll-mesg [req]
   (info "/api")
-  {:status 200
-   :headers {"Content-Type" "application/json; charset=utf-8"}
-   :body (write-str {:test "value"})})
+  (jsonRes {:test "value"}))
 
 (defn show-landing-page [req]
-  (info "Home Page: /")
+  (info "/")
   #_(redis/set "foo" "bar")
   #_(println (redis/get "foo"))
-  (layout/base [:div{:id "foo" :class "bar baz"} "Inner Content"]
-  	                  [:ul {:id "cheese" :class "wine"}
+  (layout/base [:ul {:id "foo" :class "bar"}
                           (for [x (range 1 4)]
                           [:li x])]
-                      [:button {:id "ping"} "Ping"])
+                      [:button {:id "ping"} "Ping"]
+                      [:button {:id "websocket"} "Socket"])
 )
 
 #_(defn update-userinfo [req]          ;; ordinary clojure function
@@ -51,9 +51,11 @@
 
 (defn async-handler [request]
   (with-channel request channel
+    (info "/async")
     (on-close channel (fn [status] (println "channel closed: " status)))
     (on-receive channel (fn [data] ;; echo it back
-                          (send! channel data)))))
+                          (send! channel data)
+                          (info "Sent WebSocket Data.")))))
 
 (defroutes all-routes
   (GET "/" [] show-landing-page)

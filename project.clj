@@ -17,7 +17,7 @@
                  ;;[clj-ssh "0.5.6"]                          ;; SSH
                  ;;[clj-logging-config "1.9.10"]              ;; Use this to set up logging formatting
                  [cljs-ajax "0.2.0"]
-                 [domina "1.0.2-SNAPSHOT"]
+                 [prismatic/dommy "0.1.1"]
                  [org.clojure/clojurescript "0.0-1859"]
         				 ]
 
@@ -26,9 +26,9 @@
   
   ;; Three builds - dev, production, pre-production
   :cljsbuild {
-              :builds [{:source-paths ["src/cloj"]
+              :builds [{:source-paths ["src/cloj/cljs"]
               :compiler {:output-to "resources/js/main.js"
-                         :optimizations :advanced
+                         :optimizations :whitespace
                          :pretty-print true}}]
               ; :builds
               ; {:dev

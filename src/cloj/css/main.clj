@@ -149,17 +149,38 @@
       {:box-sizing "border-box"}]
 
      [:button
-      {:padding [(px 6) (px 12)]
+      {:padding [(px 8) (px 16)]
        :background (rgb [54 126 173])
        :border-radius (px 4)
        :text-align "center"
        :border [(px 1) "solid" "transparent"]
-       :font-size (px 12)
-       :color (rgb [230 230 230])}]
+       :font-size (px 16)
+       :font-weight "lighter"
+       :color (rgb [250 250 250])}]
+
+     [:ul.bar
+      {:background (rgb [245 245 245])
+       :min-height (px 400)
+       :max-height (px 400)
+       :overflow-y "auto"
+       :padding (px 10)
+       :border-radius (px 6)
+       :border [(px 1) "solid" "transparent"]
+       :font-size (px 11)
+       :font-weight "lighter"}
+       [:li 
+        {
+         :padding (px 5)
+         :list-style "none"
+          }
+          [:&:before
+          {
+            :content "'#'"
+            }]]]
  
      [:body
       {:width (gu/percent 100)
-       :background (rgb [220 245 255])
+       :background (rgb [253 254 255])
        :font-family [["Georgia" :sans-serif]]
        :padding 0
        :margin 0}
@@ -177,7 +198,7 @@
       center-text
       {:width (gu/percent 100)
        :margin (em 0)
-       :color (hsl [0 0 100])
+       :color (rgb [176 176 176])
        :padding (px 5)
        :background (rgb [54 54 54])})
  
