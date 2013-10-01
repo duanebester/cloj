@@ -148,6 +148,21 @@
      ["*" "*:after" "*:before"
       {:box-sizing "border-box"}]
 
+     [:input#terminal
+      {
+       :padding [(px 8) (px 16)]
+       :border-radius (px 4)
+       :border [(px 1) "solid"]
+       :font-size (px 16)
+       :font-weight "lighter"
+       :width (gu/percent 100)
+       :color (rgb [90 90 90])
+        }
+        [:&:focus
+        {
+         :outline "none"
+          }]]
+
      [:button
       {:padding [(px 8) (px 16)]
        :background (rgb [54 126 173])

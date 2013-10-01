@@ -23,10 +23,11 @@
   #_(redis/set "foo" "bar")
   #_(println (redis/get "foo"))
   (layout/base [:ul {:id "foo" :class "bar"}
-                          (for [x (range 1 4)]
-                          [:li x])]
-                      [:button {:id "ping"} "Ping"]
-                      [:button {:id "websocket"} "Socket"])
+                    (for [x (range 1 4)]
+                    [:li x])]
+                [:input {:id "terminal" :type "text"}]
+                [:button {:id "ping"} "Ping"]
+                [:button {:id "websocket"} "Socket"])
 )
 
 #_(defn update-userinfo [req]          ;; ordinary clojure function
