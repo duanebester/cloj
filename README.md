@@ -1,7 +1,3 @@
-# cloj
-
-I'm very new to Clojure, trying some things out :)
-
 ## A Clojure Only Web Application
 
 > lein deps
@@ -9,8 +5,11 @@ I'm very new to Clojure, trying some things out :)
 > lein cljsbuild once
 >
 > lein run
+>
+> Server should be running @ localhost:1337
 
-Server should be running @ localhost:1337
+Info on [core.async and WebSockets](https://duanebester.telegr.am/blog_posts/clojurescript_core_async)
+
 
 ## License
 

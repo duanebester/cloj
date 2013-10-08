@@ -30,6 +30,3 @@
 (defn ^:export init []
 	#_(set! (.-onclick (sel1 :#ping)) myalert)
 	(set! (.-onclick (sel1 :#ping)) ping-server))
-
-
-
