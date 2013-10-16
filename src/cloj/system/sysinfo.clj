@@ -19,8 +19,7 @@
   (apply #(hash-map (str "Free Space (GB) " (.getAbsolutePath %))
                     ;; (1024 * 1024) = MB, (1024 * 1024 * 1024) = GB
                     (float (/ (.getFreeSpace %) (* 1024 1024 1024))))
-  #_(File/listRoots)
-  (File. (System/getProperty "user.home")))))
+  (File/listRoots))))
 
 ;; We merge the System getProps with some root file sizes
 #_(merge
@@ -37,3 +36,5 @@
                       (/ (.getFreeSpace %) (* 1024 1024 1024))) " GB"))
   (File/listRoots)))
 
+;; Here we can pass in a file location string, and get info.
+#_(-> (java.io.File. "/Users/duanebester") .getFreeSpace)
