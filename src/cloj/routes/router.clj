@@ -22,7 +22,7 @@
 
 (defn sys-info [req]
   (info "/sysinfo")
-  (pprint (sysinfo/get-sysinfo-map))
+  (pprint (sysinfo/get-sysinfo-map)))
 
 (defn show-landing-page [req]
   (info "/")

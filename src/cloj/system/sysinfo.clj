@@ -7,16 +7,14 @@
 
 (defn get-sysinfo-map
   []
-  {:a "A" :b "B"})
+  (concat
+  {"Processor-Count" (.availableProcessors (Runtime/getRuntime)),
+         "OS-Name"         (System/getProperty "os.name"),
+         "OS-Arch"         (System/getProperty "os.arch"),
+         "User-Name"       (System/getProperty "user.name"),
+         "User-Home"       (System/getProperty "user.home"),
+         "Java-Version"    (System/getProperty "java.version")}
+  (map #(hash-map (str "Disk " (.getAbsolutePath %))
+                  (str "Free-Space " (float (/ (.getFreeSpace %) (* 1024 1024 1024))) " GB"))
+  (File/listRoots))))
 
-
-#_(defn get-sysinfo-map
-  []
-  {"Processor Count" (.availableProcessors (Runtime/getRuntime))
-         "OS Name"         (System/getProperty "os.name")
-         "OS Arch"         (System/getProperty "os.arch")
-         "User Name"       (System/getProperty "user.name")
-         "Java Version"    (System/getProperty "java.version")}
-        #_(for [disk (File/listRoots)]
-          [(str "Disk " (.getAbsolutePath disk))
-           (float (/ (.getFreeSpace disk) (* 1024 1024 1024)))]))
