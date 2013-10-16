@@ -1,5 +1,7 @@
 ## A Clojure Only Web Application
 
+> brew install leiningen
+> 
 > lein deps
 >
 > lein cljsbuild once
