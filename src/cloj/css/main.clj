@@ -166,6 +166,7 @@
      [:button
       {:padding [(px 8) (px 16)]
        :background (rgb [54 126 173])
+       :margin [(px 5) (px 10) (px 10) (px 0)]
        :border-radius (px 4)
        :text-align "center"
        :border [(px 1) "solid" "transparent"]

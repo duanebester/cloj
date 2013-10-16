@@ -22,7 +22,7 @@
 
 (defn sys-info [req]
   (info "/sysinfo")
-  (pprint (sysinfo/get-sysinfo-map)))
+  (jsonRes (sysinfo/get-sysinfo-map)))
 
 (defn show-landing-page [req]
   (info "/")
@@ -33,7 +33,8 @@
                     [:li x])]
                 [:input {:id "terminal" :type "text"}]
                 [:button {:id "ping"} "Ping"]
-                [:button {:id "websocket"} "Socket"])
+                [:button {:id "websocket"} "Socket"]
+                [:button {:id "sysinfo"} "System Info"])
 )
 
 #_(defn update-userinfo [req]          ;; ordinary clojure function

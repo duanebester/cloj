@@ -16,7 +16,7 @@
    "User-Home"       (System/getProperty "user.home"),
    "Java-Version"    (System/getProperty "java.version")}
    ;; Disk Space:
-  (apply #(hash-map (str "Free Space (GB) " (.getAbsolutePath %))
+  (apply #(hash-map (str "Free-Space-(GB)_" (.getAbsolutePath %))
                     ;; (1024 * 1024) = MB, (1024 * 1024 * 1024) = GB
                     (float (/ (.getFreeSpace %) (* 1024 1024 1024))))
   (File/listRoots))))

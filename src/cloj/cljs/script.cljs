@@ -15,11 +15,26 @@
     (dommy/append! (sel1 :#foo) [:li (get-in resp ["test"])])
     (set! (.-scrollTop (sel1 :#foo)) (.-scrollHeight (sel1 :#foo)))))
 
+(defn receiveSysInfo [event]
+  (let [resp (js->clj event)]
+    (dommy/append! (sel1 :#foo) [:li (get-in resp ["Free-Space-(GB)_/"])])
+    (dommy/append! (sel1 :#foo) [:li (get-in resp ["Processor-Count"])])
+    (dommy/append! (sel1 :#foo) [:li (get-in resp ["OS-Name"])])
+    (dommy/append! (sel1 :#foo) [:li (get-in resp ["OS-Arch"])])
+    (dommy/append! (sel1 :#foo) [:li (get-in resp ["User-Name"])])
+    (dommy/append! (sel1 :#foo) [:li (get-in resp ["User-Home"])])
+    (dommy/append! (sel1 :#foo) [:li (get-in resp ["Java-Version"])])
+    (set! (.-scrollTop (sel1 :#foo)) (.-scrollHeight (sel1 :#foo)))))
+
 (defn error-handler [event]
   (log (str "Something went wrong: " event)))
  
 (defn ping-server [e]
  (GET "/api" {:handler receive :error-handler error-handler})
+ (.preventDefault e))
+
+ (defn sys-info [e]
+ (GET "/sysinfo" {:handler receiveSysInfo :error-handler error-handler})
  (.preventDefault e))
 
 (defn myalert [e]
@@ -29,4 +44,5 @@
  
 (defn ^:export init []
 	#_(set! (.-onclick (sel1 :#ping)) myalert)
-	(set! (.-onclick (sel1 :#ping)) ping-server))
+	(set! (.-onclick (sel1 :#ping)) ping-server)
+  (set! (.-onclick (sel1 :#sysinfo)) sys-info))
