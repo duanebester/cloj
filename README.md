@@ -1,16 +1,27 @@
-## A Clojure Only Web Application
+Mini Clojure Web App
+----
+I wrote (combined a bunch of many people's efforts) this mini web app server to provide a basic template for future  projects that might need to communicate over http. Based on [http-kit](http-kit.org), a super fast, lightweight async webserver. Cloj has ClojureScript WebSockets and Ajax, and functionality to talk to a Redis database. The html templating and css are all written in Clojure. 
 
-> brew install leiningen
-> 
+#### Next Steps
+* Implementing Friend or Sandbar and having User authentication.
+* Communicating to MySql database - Might as well - maybe to save User info.
+
+
+#### Up and Running
+
+Install [Leiningen](http://leiningen.org/#install). The easiest way is with Homebrew on mac. Goodluck on Windows...
+
+Then, from the project directory:
+
 > lein deps
 >
 > lein cljsbuild once
 >
 > lein run
->
-> Server should be running @ localhost:1337
 
-Info on [core.async and WebSockets](https://duanebester.telegr.am/blog_posts/clojurescript_core_async)
+Server should be running @ http://localhost:1337
+
+My blog post on [core.async and WebSockets](https://duanebester.telegr.am/blog_posts/clojurescript_core_async) for this project.
 
 
 ## License
