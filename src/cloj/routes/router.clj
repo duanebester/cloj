@@ -1,7 +1,6 @@
 (ns cloj.routes.router
   (:require [cloj.database.redis :as redis]
-            [cloj.html.layout :as layout]
-            [cloj.system.sysinfo :as sysinfo])
+            [cloj.html.layout :as layout])
   (:use [compojure.route :only [files resources not-found]]
         [compojure.handler :only [site]] ; form query params decode; cookie; session, etc
         [compojure.core :only [defroutes GET POST DELETE ANY context]]
@@ -20,10 +19,6 @@
   (info "/api")
   (jsonRes {:test "value"}))
 
-(defn sys-info [req]
-  (info "/sysinfo")
-  (jsonRes (sysinfo/get-sysinfo-map)))
-
 (defn show-landing-page [req]
   (info "/")
   #_(redis/set "foo" "bar")
@@ -33,8 +28,7 @@
                     [:li x])]
                 [:input {:id "terminal" :type "text"}]
                 [:button {:id "ping"} "Ping"]
-                [:button {:id "websocket"} "Socket"]
-                [:button {:id "sysinfo"} "System Info"])
+                [:button {:id "websocket"} "Socket"])
 )
 
 #_(defn update-userinfo [req]          ;; ordinary clojure function
@@ -69,7 +63,6 @@
   (GET "/" [] show-landing-page)
   (GET "/ws" [] chat-handler)     ;; websocket
   (GET "/api" [] poll-mesg)     ;; websocket
-  (GET "/sysinfo" [] sys-info)
   (GET "/async" [] async-handler) ;; asynchronous(long polling)
   ;;(context "/user/:id" []
   ;;         (GET / [] get-user-by-id)
