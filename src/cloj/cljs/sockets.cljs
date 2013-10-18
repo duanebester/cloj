@@ -42,7 +42,7 @@
            msg  "Message"]
        (when (= (.-type evt) "click")
          (log (str (JSON/stringify (clj->js {:msg msg :name name})) "\n"))
-         (.send ws "Test"))))))
+         (.send ws {:msg msg :name name}))))))
 
 
 (defn messages []
