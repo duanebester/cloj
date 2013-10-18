@@ -23948,16 +23948,16 @@ goog.dom.DomHelper.prototype.isNodeList = goog.dom.isNodeList;
 goog.dom.DomHelper.prototype.getAncestorByTagNameAndClass = goog.dom.getAncestorByTagNameAndClass;
 goog.dom.DomHelper.prototype.getAncestorByClass = goog.dom.getAncestorByClass;
 goog.dom.DomHelper.prototype.getAncestor = goog.dom.getAncestor;
-goog.provide("cloj.js.util");
+goog.provide("cloj.templating.js.util");
 goog.require("cljs.core");
 goog.require("goog.dom");
-cloj.js.util.length = function length(nodes) {
+cloj.templating.js.util.length = function length(nodes) {
   return nodes.length
 };
-cloj.js.util.item = function item(nodes, n) {
+cloj.templating.js.util.item = function item(nodes, n) {
   return nodes.item(n)
 };
-cloj.js.util.as_seq = function as_seq(nodes) {
+cloj.templating.js.util.as_seq = function as_seq(nodes) {
   var iter__3466__auto__ = function iter__5769(s__5770) {
     return new cljs.core.LazySeq(null, false, function() {
       var s__5770__$1 = s__5770;
@@ -23974,7 +23974,7 @@ cloj.js.util.as_seq = function as_seq(nodes) {
               while(true) {
                 if(i__5771 < size__3465__auto__) {
                   var i = cljs.core._nth.call(null, c__3464__auto__, i__5771);
-                  cljs.core.chunk_append.call(null, b__5772, cloj.js.util.item.call(null, nodes, i));
+                  cljs.core.chunk_append.call(null, b__5772, cloj.templating.js.util.item.call(null, nodes, i));
                   var G__5773 = i__5771 + 1;
                   i__5771 = G__5773;
                   continue
@@ -23990,7 +23990,7 @@ cloj.js.util.as_seq = function as_seq(nodes) {
             }
           }else {
             var i = cljs.core.first.call(null, s__5770__$2);
-            return cljs.core.cons.call(null, cloj.js.util.item.call(null, nodes, i), iter__5769.call(null, cljs.core.rest.call(null, s__5770__$2)))
+            return cljs.core.cons.call(null, cloj.templating.js.util.item.call(null, nodes, i), iter__5769.call(null, cljs.core.rest.call(null, s__5770__$2)))
           }
         }else {
           return null
@@ -23999,24 +23999,24 @@ cloj.js.util.as_seq = function as_seq(nodes) {
       }
     }, null)
   };
-  return iter__3466__auto__.call(null, cljs.core.range.call(null, cloj.js.util.length.call(null, nodes)))
+  return iter__3466__auto__.call(null, cljs.core.range.call(null, cloj.templating.js.util.length.call(null, nodes)))
 };
-cloj.js.util.by_id = function by_id(id) {
+cloj.templating.js.util.by_id = function by_id(id) {
   return document.getElementById(cljs.core.name.call(null, id))
 };
-cloj.js.util.by_tag = function by_tag(tag) {
-  return cloj.js.util.as_seq.call(null, document.getElementsByTagName(cljs.core.name.call(null, tag)))
+cloj.templating.js.util.by_tag = function by_tag(tag) {
+  return cloj.templating.js.util.as_seq.call(null, document.getElementsByTagName(cljs.core.name.call(null, tag)))
 };
-cloj.js.util.html = function html(dom) {
+cloj.templating.js.util.html = function html(dom) {
   return dom.innerHTML
 };
-cloj.js.util.set_html_BANG_ = function set_html_BANG_(dom, content) {
+cloj.templating.js.util.set_html_BANG_ = function set_html_BANG_(dom, content) {
   return dom.innerHTML = content
 };
-cloj.js.util.append_child_BANG_ = function append_child_BANG_(dom, content) {
+cloj.templating.js.util.append_child_BANG_ = function append_child_BANG_(dom, content) {
   return goog.dom.appendChild(dom, content)
 };
-cloj.js.util.log = function() {
+cloj.templating.js.util.log = function() {
   var log__delegate = function(logs) {
     return console.log([cljs.core.str(logs)].join(""))
   };
@@ -34856,21 +34856,21 @@ dommy.core.fire_BANG_ = function() {
   fire_BANG_.cljs$core$IFn$_invoke$arity$variadic = fire_BANG___delegate;
   return fire_BANG_
 }();
-goog.provide("cloj.cljs.sockets");
+goog.provide("cloj.templating.cljs.sockets");
 goog.require("cljs.core");
-goog.require("cloj.js.util");
+goog.require("cloj.templating.js.util");
 goog.require("cljs.core.async");
 goog.require("dommy.core");
 goog.require("dommy.utils");
-goog.require("cloj.js.util");
+goog.require("cloj.templating.js.util");
 goog.require("cljs.reader");
 goog.require("cljs.core.async");
-cloj.cljs.sockets.send = cljs.core.async.chan.call(null);
-cloj.cljs.sockets.receive = cljs.core.async.chan.call(null);
-cloj.cljs.sockets.alert_view = cljs.core.async.chan.call(null);
-cloj.cljs.sockets.ws_url = "ws://localhost:1337/async";
-cloj.cljs.sockets.ws = new WebSocket(cloj.cljs.sockets.ws_url);
-cloj.cljs.sockets.event_chan = function event_chan(c, el, type) {
+cloj.templating.cljs.sockets.send = cljs.core.async.chan.call(null);
+cloj.templating.cljs.sockets.receive = cljs.core.async.chan.call(null);
+cloj.templating.cljs.sockets.alert_view = cljs.core.async.chan.call(null);
+cloj.templating.cljs.sockets.ws_url = "ws://localhost:1337/async";
+cloj.templating.cljs.sockets.ws = new WebSocket(cloj.templating.cljs.sockets.ws_url);
+cloj.templating.cljs.sockets.event_chan = function event_chan(c, el, type) {
   var writer = function(p1__5588_SHARP_) {
     return cljs.core.async.put_BANG_.call(null, c, p1__5588_SHARP_)
   };
@@ -34879,8 +34879,8 @@ cloj.cljs.sockets.event_chan = function event_chan(c, el, type) {
     return dommy.core.unlisten_BANG_.call(null, el, type, writer)
   }], true)
 };
-cloj.cljs.sockets.make_sender = function make_sender() {
-  cloj.cljs.sockets.event_chan.call(null, cloj.cljs.sockets.send, document.getElementById("websocket"), "\ufdd0:click");
+cloj.templating.cljs.sockets.make_sender = function make_sender() {
+  cloj.templating.cljs.sockets.event_chan.call(null, cloj.templating.cljs.sockets.send, document.getElementById("websocket"), "\ufdd0:click");
   var c__5550__auto__ = cljs.core.async.chan.call(null, 1);
   cljs.core.async.impl.dispatch.run.call(null, function() {
     var f__5551__auto__ = function() {
@@ -34911,7 +34911,7 @@ cloj.cljs.sockets.make_sender = function make_sender() {
             }else {
               if(state_val_5655 === 4) {
                 var state_5654__$1 = state_5654;
-                return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_5654__$1, 7, cloj.cljs.sockets.send)
+                return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_5654__$1, 7, cloj.templating.cljs.sockets.send)
               }else {
                 if(state_val_5655 === 5) {
                   var state_5654__$1 = state_5654;
@@ -34947,9 +34947,9 @@ cloj.cljs.sockets.make_sender = function make_sender() {
                         var inst_5638 = cljs.core.clj__GT_js.call(null, inst_5637);
                         var inst_5639 = JSON.stringify.call(null, inst_5638);
                         var inst_5640 = [cljs.core.str(inst_5639), cljs.core.str("\n")].join("");
-                        var inst_5641 = cloj.js.util.log.call(null, inst_5640);
+                        var inst_5641 = cloj.templating.js.util.log.call(null, inst_5640);
                         var inst_5642 = cljs.core.hash_map.call(null, "\ufdd0:msg", "Message", "\ufdd0:name", "Duane");
-                        var inst_5643 = cloj.cljs.sockets.ws.send(inst_5642);
+                        var inst_5643 = cloj.templating.cljs.sockets.ws.send(inst_5642);
                         var state_5654__$1 = function() {
                           var statearr_5663 = state_5654;
                           statearr_5663[5] = inst_5641;
@@ -35035,10 +35035,10 @@ cloj.cljs.sockets.make_sender = function make_sender() {
   });
   return c__5550__auto__
 };
-cloj.cljs.sockets.messages = function messages() {
+cloj.templating.cljs.sockets.messages = function messages() {
   return document.getElementById("foo")
 };
-cloj.cljs.sockets.add_message = function add_message() {
+cloj.templating.cljs.sockets.add_message = function add_message() {
   var c__5550__auto__ = cljs.core.async.chan.call(null, 1);
   cljs.core.async.impl.dispatch.run.call(null, function() {
     var f__5551__auto__ = function() {
@@ -35054,10 +35054,10 @@ cloj.cljs.sockets.add_message = function add_message() {
           var inst_5729 = dommy.core.append_BANG_.call(null, inst_5726, inst_5728);
           var inst_5730 = document.getElementById("foo");
           var inst_5731 = inst_5730.scrollTop;
-          var inst_5732 = cloj.js.util.log.call(null, "Top: ", inst_5731);
+          var inst_5732 = cloj.templating.js.util.log.call(null, "Top: ", inst_5731);
           var inst_5733 = document.getElementById("foo");
           var inst_5734 = inst_5733.scrollHeight;
-          var inst_5735 = cloj.js.util.log.call(null, "Height: ", inst_5734);
+          var inst_5735 = cloj.templating.js.util.log.call(null, "Height: ", inst_5734);
           var inst_5736 = document.getElementById("foo");
           var inst_5737 = document.getElementById("foo");
           var inst_5738 = inst_5737.scrollHeight;
@@ -35092,7 +35092,7 @@ cloj.cljs.sockets.add_message = function add_message() {
             }else {
               if(state_val_5748 === 4) {
                 var state_5747__$1 = state_5747;
-                return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_5747__$1, 7, cloj.cljs.sockets.receive)
+                return cljs.core.async.impl.ioc_helpers.take_BANG_.call(null, state_5747__$1, 7, cloj.templating.cljs.sockets.receive)
               }else {
                 if(state_val_5748 === 3) {
                   var inst_5745 = state_5747[2];
@@ -35170,49 +35170,49 @@ cloj.cljs.sockets.add_message = function add_message() {
   });
   return c__5550__auto__
 };
-cloj.cljs.sockets.make_receiver = function make_receiver() {
-  cloj.cljs.sockets.ws.onmessage = function(msg) {
-    return cljs.core.async.put_BANG_.call(null, cloj.cljs.sockets.receive, msg)
+cloj.templating.cljs.sockets.make_receiver = function make_receiver() {
+  cloj.templating.cljs.sockets.ws.onmessage = function(msg) {
+    return cljs.core.async.put_BANG_.call(null, cloj.templating.cljs.sockets.receive, msg)
   };
-  return cloj.cljs.sockets.add_message.call(null)
+  return cloj.templating.cljs.sockets.add_message.call(null)
 };
-cloj.cljs.sockets.init_BANG_ = function init_BANG_() {
-  cloj.cljs.sockets.make_sender.call(null);
-  return cloj.cljs.sockets.make_receiver.call(null)
+cloj.templating.cljs.sockets.init_BANG_ = function init_BANG_() {
+  cloj.templating.cljs.sockets.make_sender.call(null);
+  return cloj.templating.cljs.sockets.make_receiver.call(null)
 };
-cloj.cljs.sockets.init = function init() {
-  return window.onload = cloj.cljs.sockets.init_BANG_
+cloj.templating.cljs.sockets.init = function init() {
+  return window.onload = cloj.templating.cljs.sockets.init_BANG_
 };
-goog.exportSymbol("cloj.cljs.sockets.init", cloj.cljs.sockets.init);
-goog.provide("cloj.cljs.script");
+goog.exportSymbol("cloj.templating.cljs.sockets.init", cloj.templating.cljs.sockets.init);
+goog.provide("cloj.templating.cljs.script");
 goog.require("cljs.core");
-goog.require("cloj.js.util");
+goog.require("cloj.templating.js.util");
 goog.require("cljs.core.async");
 goog.require("ajax.core");
 goog.require("cljs.reader");
 goog.require("cljs.core.async");
-goog.require("cloj.js.util");
+goog.require("cloj.templating.js.util");
 goog.require("dommy.core");
 goog.require("dommy.utils");
 goog.require("ajax.core");
-cloj.cljs.script.receive = function receive(event) {
+cloj.templating.cljs.script.receive = function receive(event) {
   var resp = cljs.core.js__GT_clj.call(null, event);
   dommy.core.append_BANG_.call(null, document.getElementById("foo"), cljs.core.PersistentVector.fromArray(["\ufdd0:li", cljs.core.get_in.call(null, resp, cljs.core.PersistentVector.fromArray(["test"], true))], true));
   return document.getElementById("foo").scrollTop = document.getElementById("foo").scrollHeight
 };
-cloj.cljs.script.error_handler = function error_handler(event) {
-  return cloj.js.util.log.call(null, [cljs.core.str("Something went wrong: "), cljs.core.str(event)].join(""))
+cloj.templating.cljs.script.error_handler = function error_handler(event) {
+  return cloj.templating.js.util.log.call(null, [cljs.core.str("Something went wrong: "), cljs.core.str(event)].join(""))
 };
-cloj.cljs.script.ping_server = function ping_server(e) {
-  ajax.core.GET.call(null, "/api", cljs.core.PersistentArrayMap.fromArray(["\ufdd0:handler", cloj.cljs.script.receive, "\ufdd0:error-handler", cloj.cljs.script.error_handler], true));
+cloj.templating.cljs.script.ping_server = function ping_server(e) {
+  ajax.core.GET.call(null, "/api", cljs.core.PersistentArrayMap.fromArray(["\ufdd0:handler", cloj.templating.cljs.script.receive, "\ufdd0:error-handler", cloj.templating.cljs.script.error_handler], true));
   return e.preventDefault()
 };
-cloj.cljs.script.myalert = function myalert(e) {
+cloj.templating.cljs.script.myalert = function myalert(e) {
   window.alert([cljs.core.str("Hello!")].join(""));
-  cloj.js.util.log.call(null, "something happened");
+  cloj.templating.js.util.log.call(null, "something happened");
   return e.preventDefault()
 };
-cloj.cljs.script.init = function init() {
-  return document.getElementById("ping").onclick = cloj.cljs.script.ping_server
+cloj.templating.cljs.script.init = function init() {
+  return document.getElementById("ping").onclick = cloj.templating.cljs.script.ping_server
 };
-goog.exportSymbol("cloj.cljs.script.init", cloj.cljs.script.init);
+goog.exportSymbol("cloj.templating.cljs.script.init", cloj.templating.cljs.script.init);

@@ -26,7 +26,7 @@
   
   ;; Three builds - dev, production, pre-production
   :cljsbuild {
-              :builds [{:source-paths ["src/cloj/cljs"]
+              :builds [{:source-paths ["src/cloj/templating/cljs"]
               :compiler {:output-to "resources/js/main.js"
                          :optimizations :whitespace
                          :pretty-print true}}]
