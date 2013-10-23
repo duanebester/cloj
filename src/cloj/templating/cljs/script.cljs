@@ -2,7 +2,7 @@
 (:require [ajax.core :refer [GET POST]]
 		  [dommy.utils :as utils]
       [dommy.core :as dommy]
-		  [cloj.templating.js.util :refer [log]]
+		  [cloj.templating.cljs.util :refer [log]]
       [cljs.core.async :refer [chan <! >! put!]]
       [cljs.reader :as reader])
 (:use-macros
@@ -12,6 +12,7 @@
 
 (defn receive [event]
   (let [resp (js->clj event)]
+    (log "ping")
     (dommy/append! (sel1 :#foo) [:li (get-in resp ["test"])])
     (set! (.-scrollTop (sel1 :#foo)) (.-scrollHeight (sel1 :#foo)))))
 

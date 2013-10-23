@@ -1,4 +1,4 @@
-(ns cloj.templating.js.util
+(ns cloj.templating.cljs.util
 (:require [goog.dom :as gdom]))
 
 (defn length [nodes] (. nodes -length))

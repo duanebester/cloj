@@ -2,7 +2,7 @@
 (:require
    [cljs.core.async :refer [chan <! >! put!]]
    [cljs.reader :as reader]
-   [cloj.templating.js.util :refer [log]]
+   [cloj.templating.cljs.util :refer [log]]
    [dommy.utils :as utils]
    [dommy.core :as dommy])
 (:use-macros
@@ -14,7 +14,7 @@
 (def receive (chan))
 (def alert-view (chan))
 
-(def ws-url "ws://localhost:1337/async")
+(def ws-url "ws://localhost:1338/async")
 (def ws (new js/WebSocket ws-url))
 
 ;; Lifted almost completely from dnolen: 

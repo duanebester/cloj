@@ -5,5 +5,5 @@
             [org.httpkit.server]))
 
 (defn start-server [port]
-	(run-server (site #'routes/all-routes) {:port 1337})
-	(println "Server started on port 1337"))
+	(run-server (site #'routes/all-routes) {:port 1338})
+	(println "Server started on port 1338"))

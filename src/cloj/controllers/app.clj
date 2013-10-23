@@ -52,6 +52,6 @@
     (info "/async")
     (on-close channel (fn [status] (println "channel closed: " status)))
     (on-receive channel (fn [data] ;; echo it back
-                          (send! channel data)
+                          (send! channel (str (jsonRes {:data "Duane2"})))
                           (info "Sent WebSocket Data.")))))
 
