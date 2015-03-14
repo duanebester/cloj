@@ -22,16 +22,10 @@
 (defn event-chan
   [c el type]
   (let [writer #(put! c %)]
+    (.alert js/window (str el type writer))
     (dommy/listen! el type writer)
     {:chan c
      :unsubscribe #(dommy/unlisten! el type writer)}))
-
-#_(defn make-sender []
-  (event-chan send (sel1 :#websocket) :click)
-  (go
-   (while true
-     (let [evt  (<! send)]
-         (.send ws (clj->js {:msg "test" :name "duane"}))))))
 
 (defn make-sender []
   (event-chan send (sel1 :#websocket) :click)
@@ -40,6 +34,7 @@
      (let [evt  (<! send)
            name "Duane"
            msg  "Message"]
+       (.alert js/window (str (.-type evt)))
        (when (= (.-type evt) "click")
          (log (str (JSON/stringify (clj->js {:msg msg :name name})) "\n"))
          (.send ws {:msg msg :name name}))))))
