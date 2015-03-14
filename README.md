@@ -2,7 +2,11 @@ Mini Clojure Web App
 ----
 ### Entirely in Clojure
 
-I wrote (combined a bunch of many people's efforts) this mini web app server to provide a basic template for future  projects that might need to communicate over http. Based on [http-kit](http-kit.org), a super fast, lightweight async webserver. Cloj has ClojureScript WebSockets and Ajax, and functionality to talk to a Redis database. The html templating and css are all written in Clojure. 
+I wrote (combined a bunch of many people's efforts) this mini web app server to provide a basic template for future  projects that might need to communicate over http. Based on [http-kit](http-kit.org), a super fast, lightweight async webserver. Cloj has ClojureScript WebSockets and Ajax, and functionality to talk to a Redis database. 
+
+The html templating is written in Clojure.
+The css is written in Clojure.
+The front end is written in ClojureScript, which compiles down to JS.
 
 #### Next Steps
 * Implementing Friend or Sandbar and having User authentication.
